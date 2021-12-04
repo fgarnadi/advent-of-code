@@ -10,7 +10,6 @@ if __name__ == '__main__':
 
         if len(window) == window_size:
             curr = sum(window)
-            print(curr, before)
             if curr > before:
                 up += 1
 

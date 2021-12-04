@@ -3,31 +3,30 @@ from sys import stdin
 binary_length = 12
 
 if __name__ == '__main__':
-    _lines = []
+    lines = []
     for line in stdin:
-        _bin = list(line.strip())
-        _lines.append(_bin)
+        lines.append(list(line.strip()))
 
-    _oxy = _lines
-    _co2 = _lines
+    oxy = lines
+    co2 = lines
 
     for i in range(binary_length):
-        _oxy_c = sum([int(x[i]) for x in _oxy])
-        _val_oxy = '1'
-        _len_oxy = len(_oxy)
-        if(_oxy_c < (_len_oxy - _oxy_c)):
-            _val_oxy = '0'
+        oxy_count = sum([int(x[i]) for x in oxy])
+        oxy_val = '1'
+        oxy_len = len(oxy)
+        if(oxy_count < (oxy_len - oxy_count)):
+            oxy_val = '0'
 
-        if _len_oxy > 1:
-            _oxy = list(filter(lambda x: x[i] == _val_oxy, _oxy))
+        if oxy_len > 1:
+            oxy = list(filter(lambda x: x[i] == oxy_val, oxy))
 
-        _co2_c = sum([int(x[i]) for x in _co2])
-        _val_co2 = '0'
-        _len_co2 = len(_co2)
-        if(_co2_c < (_len_co2 - _co2_c)):
-            _val_co2 = '1'
+        co2_count = sum([int(x[i]) for x in co2])
+        co2_val = '0'
+        co2_len = len(co2)
+        if(co2_count < (co2_len - co2_count)):
+            co2_val = '1'
 
-        if _len_co2 > 1:
-            _co2 = list(filter(lambda x: x[i] == _val_co2, _co2))
+        if co2_len > 1:
+            co2 = list(filter(lambda x: x[i] == co2_val, co2))
 
-    print(int("".join(_oxy[0]), 2) * int("".join(_co2[0]), 2))
+    print(int("".join(oxy[0]), 2) * int("".join(co2[0]), 2))

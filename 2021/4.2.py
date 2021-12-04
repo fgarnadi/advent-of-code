@@ -47,28 +47,28 @@ if __name__ == '__main__':
     command = input()
     command = list(map(int, command.split(',')))
 
-    _len_board = -1
-    _board = []
+    board_len = -1
+    boards = []
     for line in stdin:
         line = line.strip()
         if (line == ''):
-            _board.append([[], False])
-            _len_board += 1
+            boards.append([[], False])
+            board_len += 1
             continue
         
-        _board[_len_board][0].append(list(map(int, line.split())))
+        boards[board_len][0].append(list(map(int, line.split())))
 
-    _win = 0
+    win_count = 0
     for cmd in command:
-        for board in _board:
+        for board in boards:
             if board[1]:
                 continue
 
             board[0] = mark(board[0], cmd)
 
             if(check_win(board[0])):
-                _win += 1
+                win_count += 1
                 board[1] = True
-                if _win == _len_board+1:
+                if win_count == board_len+1:
                     print(count_score(board[0]) * cmd)
                     exit()

@@ -47,18 +47,18 @@ if __name__ == '__main__':
     command = list(map(int, command.split(',')))
 
     i = -1
-    _board = []
+    boards = []
     for line in stdin:
         line = line.strip()
         if (line == ''):
-            _board.append([])
+            boards.append([])
             i += 1
             continue
         
-        _board[i].append(list(map(int, line.split())))
+        boards[i].append(list(map(int, line.split())))
 
     for cmd in command:
-        for board in _board:
+        for board in boards:
             board = mark(board, cmd)
 
             if(check_win(board)):
